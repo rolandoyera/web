@@ -1,0 +1,282 @@
+:root {
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-bg-strong: rgba(255, 255, 255, 0.85);
+  --ring: rgba(255, 255, 255, 0.6);
+  --text: #0e0f12;
+  --muted: #4a4f5a;
+  --line: rgba(15, 15, 20, 0.08);
+
+  --shadow: 0 12px 40px rgba(12, 15, 20, 0.25);
+  --radius: 18px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: rgba(15, 17, 22, 0.6);
+    --card-bg-strong: rgba(15, 17, 22, 0.9);
+    --ring: rgba(255, 255, 255, 0.14);
+    --text: #eef2ff;
+    --muted: #9aa3b2;
+    --line: rgba(255, 255, 255, 0.08);
+    --shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* --- Card --- */
+.card {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius);
+  padding: 28px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  overflow: hidden;
+}
+
+/* Ambient glow */
+.glow {
+  position: absolute;
+  inset: -40% -20% auto -20%;
+  height: 70%;
+  background: radial-gradient(
+    60% 60% at 50% 30%,
+    color-mix(in oklab, var(--accent1) 40%, transparent) 0%,
+    transparent 60%
+  );
+  filter: blur(40px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --- Header --- */
+.header {
+  margin-bottom: 16px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+.title {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.15;
+  color: var(--text);
+}
+.lede {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* --- Progress (sending) --- */
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  opacity: 0.7;
+  animation: load 1.4s ease-in-out infinite;
+}
+@keyframes load {
+  0% {
+    transform: translateX(-30%);
+  }
+  50% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* --- Form --- */
+.form {
+  margin-top: 14px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Floating label fields */
+.field {
+  position: relative;
+}
+.input {
+  width: 100%;
+  font: 500 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--card-bg-strong);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 14px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  margin-bottom: 14px;
+}
+.input::placeholder {
+  color: transparent;
+}
+.input:focus {
+  border-color: white;
+  background: color-mix(in oklab, var(--card-bg-strong) 85%, white 15%);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent2) 18%, transparent);
+}
+
+/* show red only when NOT focused and there's no value (placeholder still showing) */
+.input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px color-mix(in oklab, #ef4444 18%, transparent);
+}
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.label {
+  position: absolute;
+  pointer-events: none;
+  left: 12px;
+  top: 13px;
+  padding: 0 6px;
+  color: var(--muted);
+  background: transparent;
+  transform-origin: left center;
+  transition: transform 0.18s ease, top 0.18s ease, color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+/* Float when focused or content present */
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label,
+.textarea:focus + .label,
+.textarea:not(:placeholder-shown) + .label {
+  top: -7px;
+  transform: scale(0.85);
+  background: var(--card-bg-strong);
+
+  border-radius: 6px;
+}
+
+/* Soft halo accent (pure decoration) */
+.focusHalo {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: scale(0.98);
+  background: radial-gradient(
+    60% 60% at 50% 20%,
+    color-mix(in oklab, var(--accent1) 16%, transparent),
+    transparent 70%
+  );
+  filter: blur(14px);
+}
+.input:focus ~ .focusHalo,
+.textarea:focus ~ .focusHalo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Actions --- */
+.actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--ring);
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(140deg, var(--accent1), var(--accent2) 60%);
+  box-shadow: 0 10px 20px rgba(8, 10, 18, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  user-select: none;
+}
+.button:hover {
+  filter: brightness(1.05);
+}
+.button:active {
+  transform: translateY(1px) scale(0.99);
+}
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Button inner to clip the subtle ring */
+.buttonInner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+/* --- Banners --- */
+.status {
+  min-height: 30px;
+  margin-top: 10px;
+}
+.banner {
+  font-size: 13px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--card-bg-strong) 80%, white 20%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.ok {
+  color: #065f46;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.err {
+  color: #7f1d1d;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Autofill fix */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--card-bg-strong) inset;
+  transition: background-color 99999s ease-in-out 0s;
+}

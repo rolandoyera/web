@@ -79,8 +79,8 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
         aria-modal="true"
         aria-label={title}
         className={[
-          "relative m-4 w-full max-w-lg rounded-2xl bg-white/90 p-6 shadow-2xl ring-1 ring-black/10 backdrop-blur-xl",
-          "dark:bg-neutral-900/90 dark:text-white",
+          "relative m-4 w-full max-w-lg rounded-2xl p-6 shadow-2xl ring-1 ring-black/10 backdrop-blur-xl",
+          "bg-neutral-900/90 text-white",
           "will-change-[transform,opacity,filter]",
           dialogAnim,
         ].join(" ")}>
@@ -95,7 +95,7 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-black/70 ring-1 ring-black/10 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:bg-white/10 dark:text-white/80 dark:ring-white/10 dark:hover:bg-white/15">
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/80 ring-1 transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:bg-white/10 text-white/80 ring-white/10">
             <svg
               width="18"
               height="18"

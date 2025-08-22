@@ -13,11 +13,12 @@ export default function Home() {
       {/* Navbar (90px tall, blur only, centered logo) */}
       <nav className="fixed inset-x-0 top-0 z-50 flex h-[90px] items-center justify-center backdrop-blur">
         <Image
-          src="/logo-white.png"
+          src="/logo-white-320x85.png"
           alt="Canbri"
           width={160}
-          height={40}
+          height={43}
           priority
+          className="w-[160px] h-auto"
         />
       </nav>
 

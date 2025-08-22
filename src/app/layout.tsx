@@ -13,8 +13,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Canbri Interiors | Coming Soon",
-  description: "Welcome to Canbri",
+  metadataBase: new URL("https://canbriinteriors.com"), // ← your production domain
+  title: {
+    default: "Coming Soon | Canbri Interiors",
+    template: "Coming Soon | Canbri Interiors",
+  },
+  description:
+    "Made-to-order excellence in furniture and lighting. Canbri Interiors partners with clients and designers to deliver flawless finishes and a perfect fit.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Canbri Interiors",
+    title: "Canbri Interiors",
+    description:
+      "Made-to-order excellence in furniture and lighting. Canbri Interiors partners with clients and designers to deliver flawless finishes and a perfect fit.",
+    images: [
+      {
+        url: "/og/logo-white-1600x425.png", // put a 1600×425 image in public/og/
+        width: 1600,
+        height: 425,
+        alt: "Canbri— bespoke furniture & lighting",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Canbri Interiors",
+    description:
+      "Made-to-order excellence in furniture and lighting. Canbri Interiors partners with clients and designers to deliver flawless finishes and a perfect fit.",
+    images: ["/og/logo-white-1600x425.png"],
+    creator: "@canbriinteriors", // optional
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -110,7 +110,7 @@ export default function ContactFormTW({
                 placeholder="Your name"
                 autoComplete="name"
                 className={[
-                  "block w-full rounded-lg border px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 shadow-sm outline-none transition",
+                  "block w-full rounded-lg border px-3 py-2 text-sm placeholder:text-neutral-400 text-white shadow-sm outline-none transition",
                   errors.name
                     ? "border-red-400 focus:border-red-400 focus:ring-2 focus:ring-red-200"
                     : "border-neutral-300 focus:border-neutral-400 focus:ring-2 focus:ring-black/10",
@@ -134,7 +134,7 @@ export default function ContactFormTW({
                 placeholder="you@company.com"
                 autoComplete="email"
                 className={[
-                  "block w-full rounded-lg border px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 shadow-sm outline-none transition",
+                  "block w-full rounded-lg border px-3 py-2 text-sm text-white placeholder:text-neutral-400 shadow-sm outline-none transition",
                   errors.email
                     ? "border-red-400 focus:border-red-400 focus:ring-2 focus:ring-red-200"
                     : "border-neutral-300 focus:border-neutral-400 focus:ring-2 focus:ring-black/10",
@@ -157,7 +157,7 @@ export default function ContactFormTW({
                 name="company"
                 placeholder="Optional"
                 autoComplete="organization"
-                className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 shadow-sm outline-none transition focus:border-neutral-400 focus:ring-2 focus:ring-black/10"
+                className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm text-white placeholder:text-neutral-400 shadow-sm outline-none transition focus:border-neutral-400 focus:ring-2 focus:ring-black/10"
                 type="text"
               />
             </div>
@@ -174,7 +174,7 @@ export default function ContactFormTW({
                 rows={5}
                 placeholder="How can we help?"
                 className={[
-                  "block w-full resize-y rounded-lg border  px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 shadow-sm outline-none transition",
+                  "block w-full resize-y rounded-lg border  px-3 py-2 text-sm text-white placeholder:text-neutral-400 shadow-sm outline-none transition",
                   errors.message
                     ? "border-red-400 focus:border-red-400 focus:ring-2 focus:ring-red-200"
                     : "border-neutral-300 focus:border-neutral-400 focus:ring-2 focus:ring-black/10",

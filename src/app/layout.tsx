@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Made-to-order excellence in furniture and lighting. Canbri Interiors partners with clients and designers to deliver flawless finishes and a perfect fit.",
     images: [
       {
-        url: "/og/logo-white-1600x425.png", // put a 1600×425 image in public/og/
+        url: "/og/logo-black-1600x425.jpg", // put a 1600×425 image in public/og/
         width: 1600,
         height: 425,
         alt: "Canbri— bespoke furniture & lighting",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Canbri Interiors",
     description:
       "Made-to-order excellence in furniture and lighting. Canbri Interiors partners with clients and designers to deliver flawless finishes and a perfect fit.",
-    images: ["/og/logo-white-1600x425.png"],
+    images: ["/og/logo-black-1600x425.jpg"],
     creator: "@canbriinteriors", // optional
   },
   icons: {

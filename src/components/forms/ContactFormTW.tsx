@@ -190,7 +190,7 @@ export default function ContactFormTW({
             <button
               type="submit"
               disabled={status === "sending"}
-              className=" glowing-button inline-flex items-center justify-center rounded-full bg-black px-8 py-4 font-medium text-white shadow-sm ring-1 ring-black/10 transition hover:bg-black/90 disabled:opacity-60 mt-4">
+              className=" glowing-button-2 inline-flex items-center justify-center rounded-full bg-black px-8 py-4 font-medium text-white shadow-sm ring-1 ring-black/10 transition hover:bg-black/90 disabled:opacity-60 mt-4">
               {status === "sending" ? "Sending…" : "Send Message"}
             </button>
           </div>

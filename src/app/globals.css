@@ -18,19 +18,142 @@
     --foreground: #ededed;
   }
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: Arial, Helvetica, sans-serif;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff; /* text color */
+  -webkit-box-shadow: 0 0 0 1000px #313131ff inset; /* background “fill” */
+  box-shadow: 0 0 0 1000px #313131ff inset;
+  caret-color: #111827;
 }
 
-.line {
-  transform: translateY(100%);
-  will-change: transform;
+button {
+  cursor: pointer;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[fade-up_0\.8s_ease-out_0\.1s_both\],
+  .animate-\[fade-up_0\.8s_ease-out_0\.25s_both\],
+  .animate-\[fade-up_0\.8s_ease-out_0\.4s_both\] {
+    animation: none !important;
+  }
+}
+@keyframes glow-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 132, 100, 0.7); /* Initial glow */
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(252, 182, 124, 1),
+      0 0 20px rgba(254, 185, 128, 0.8); /* Expanded glow */
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 132, 100, 0.7); /* Return to initial */
+  }
+}
+.glowing-button {
+  /* ... other button styles ... */
+  box-shadow: 0 0 5px rgba(255, 132, 0, 0.7); /* Initial shadow */
+  animation: glow-pulse 2s infinite alternate; /* Apply the animation */
+}
+
+@keyframes glow-pulse2 {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 198, 100, 0.7); /* Initial glow */
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(255, 198, 100, 1), 0 0 8px rgba(255, 198, 100, 0.8); /* Expanded glow */
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 132, 100, 0.7); /* Return to initial */
+  }
+}
+
+.glowing-button-2 {
+  /* ... other button styles ... */
+  box-shadow: 0 0 1px rgba(213, 154, 90, 0.7); /* Initial shadow */
+  animation: glow-pulse2 2s infinite alternate; /* Apply the animation */
+}
+
+/* Backdrop fade + blur */
+@keyframes modal-overlay-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
+}
+@keyframes modal-overlay-out {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* Dialog pop with a tiny overshoot + de-blur */
+@keyframes modal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes modal-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    filter: blur(6px);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[modal-overlay-in_220ms_ease-out\],
+  .animate-\[modal-overlay-out_160ms_ease-in\],
+  .animate-\[modal-in_360ms_cubic-bezier\(0\.18\,0\.9\,0\.2\,1\.1\)_both\],
+  .animate-\[modal-out_200ms_ease_forwards\] {
+    animation: none !important;
+  }
+}
+@keyframes pop-success {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
